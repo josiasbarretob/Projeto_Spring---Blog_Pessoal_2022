@@ -1,6 +1,7 @@
 package com.generation.blogpessoal.model;
 
-import java.time.LocalDate; //Importação do LocalDate
+//import java.time.LocalDate; //Importação do LocalDate
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,7 +33,7 @@ public class Postagem {
 	private String texto;
 	
 	@UpdateTimestamp //Data automática do Servidor
-	private LocalDate data;
+	private LocalDateTime data;
 	
 	//Source > Generate Getters and Setters...
 	public Long getId() {
@@ -53,10 +54,10 @@ public class Postagem {
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
-	public LocalDate getData() {
+	public LocalDateTime getData() {
 		return data;
 	}
-	public void setData(LocalDate data) {
+	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
 	
