@@ -7,12 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity //Classe que vai gerar uma tabela ou entidade no meu banco de dados
 @Table (name = "tb_postagens") //Definir o nome da Tabela = CREATE TABLE.
@@ -34,6 +37,10 @@ public class Postagem {
 	
 	@UpdateTimestamp //Data automática do Servidor
 	private LocalDateTime data;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Usuario usuario;
 	
 	//Source > Generate Getters and Setters...
 	public Long getId() {
@@ -59,6 +66,12 @@ public class Postagem {
 	}
 	public void setData(LocalDateTime data) {
 		this.data = data;
+	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 	
